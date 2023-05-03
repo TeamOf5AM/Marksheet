@@ -1,0 +1,55 @@
+/* .rounded-1{
+    border-radius: 4px !important;
+}
+.fs-5{
+    font-size: large !important;
+}
+.mclr:hover{
+    color: black;
+}
+.active , .active i{
+    background-color: rgb(234, 233, 233) !important;
+    color: black !important;
+    font-weight: bold;
+}
+.nav-link:hover ,.nav-link:hover i{
+    background-color: rgb(247, 244, 244);
+    color: black !important;
+    font-weight: bold;
+} */
+.mclr{
+    text-decoration: none !important;
+    color: black;
+}
+.text-black{
+        color: black;
+    }
+.dataTables_filter{
+    color: #000;
+}
+.dataTables_filter .form-control{
+    border: 1px solid black;
+}
+.dataTables_filter .form-control:focus{
+    box-shadow: 0 0 0 0.2rem rgba(136, 136, 136, 0.25);
+    border: 1px solid black;
+}
+div.dataTables_length select{
+    border: 1px solid black;
+}
+div.dataTables_length select:focus{
+    box-shadow: 0 0 0 0.2rem rgba(136, 136, 136, 0.25);
+    border: 1px solid black;
+}
+div.dataTables_length label{
+    color: black;
+}
+div.dataTables_info{
+    color: black;
+}
+.toast-success{
+    background-color: green !important;
+}
+.select2-selection--multiple{
+    height: auto;
+}
