@@ -17,7 +17,7 @@ Class ClassController extends Controller
      */
     public function index()
     {
-        $result['classes'] = Classes::all();
+        $result['classes'] = Classes::where('trash',0)->get();
         $result['sections'] = Section::get();
         return view('user.classes.index',$result);
     }
@@ -63,17 +63,16 @@ Class ClassController extends Controller
 
     public function status(Request $request)
     {
-        dd($request->class_id);
-        // $section = [];
-        // $section = $request->class_section;
-        // dd(count($request->class_section));
-        // $model = new Classes;
-        // $model->class_name = $request->class_name;
-        // $model->class_numeric = $request->class_numeric;
-        // $model->class_section = json_encode($section);
-        // $model->save();
-        Session::flash('success', 'Class Added Successfully'); 
-        return response()->json(['msg'=>trans('Data Found'),'status' => true],200);
+        Classes::where('class_id',$request->class_id)->update(array('status' => $request->status)); 
+        return response()->json(['msg'=>trans('Class Updates'),'status' => true],200);
+    }
+
+    public function delete($class_id)
+    {
+        Classes::where('class_id',$class_id)->update(array('trash' => 1));
+        Session::flash('success', 'Class Deleted Successfully'); 
+        return back();
+        // return back()->with(['msg' => 'Class Deleted']);
     }
 
     /**

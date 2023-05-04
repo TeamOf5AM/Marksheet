@@ -48,7 +48,8 @@ div.dataTables_info{
     color: black;
 }
 .toast-success{
-    background-color: green !important;
+    background-color: rgb(5, 104, 5) !important;
+    opacity: 0.9 !important;
 }
 .select2-selection--multiple{
     height: auto;

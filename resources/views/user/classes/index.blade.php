@@ -70,8 +70,8 @@
                                     </td>
                                     <td>{{$data->created_at}}</td>
                                     <td>
-                                        <a href="javascript:void(0);" onclick=edit_class(1)><i class="far fa-edit" style="color: #5721d4;"></i></a>
-                                        <a href="javascript:void(0);"><i class="far fa-trash-alt text-danger"></i></a>
+                                        <a href="javascript:void(0);" onclick=edit_class({{"$data->class_id"}})><i class="far fa-edit" style="color: #5721d4;"></i></a>
+                                        <a href="javascript:void(0);" onclick=delete_patient({{"$data->class_id"}})><i class="far fa-trash-alt text-danger"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -87,7 +87,7 @@
 
 
 
-        <!-- Logout Modal-->
+        <!-- Add Class Modal-->
     <div class="modal fade" id="addClassModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -114,7 +114,7 @@
                         <label class="small mb-1" for="id_label_multiple">Class Section</label><br>
                         <select class="form-control js-example-basic-multiple js-states" name="class_section[]" id="id_label_multiple" multiple="multiple" style="width:100%;">
                             @foreach($sections as $data)
-                            <option value="{{$data->section_name}}">{{$data->section_name}}</option>
+                            <option id="{{$data->section_name}}" value="{{$data->section_name}}">{{$data->section_name}}</option>
                             @endforeach
                         </select>
                         </div>
@@ -130,10 +130,16 @@
         </div>
     </div>
 
+    @include('user/partials/delete')
+
     <script>
 
-$(".js-example-basic-multiple").select2({
-});
+        $( document ).ready(function() {
+            $(".js-example-basic-multiple").select2({
+            });
+        });
+
+
 
     // =========
     // Add Class 
@@ -173,10 +179,20 @@ $(".js-example-basic-multiple").select2({
                 $('#id').val(id);
                 $('#class_name').val(data.data.class_name);
                 $('#class_numeric').val(data.data.class_numeric);
-                $('#class_section').val(data.data.class_section);
+                const res = JSON.parse(data.data.class_section);
+                // res.forEach(myClassSection);
+                $(".js-example-basic-multiple").select2('destroy');
+                $(".js-example-basic-multiple").select2({ data: res });
+                // $(".js-example-basic-multiple").select2();
+                // setTimeout(function(){
+                //     console.log('hello');
+                // },5000)
                 $('#addClassModal').modal('show');
             });
 
+        }
+        function myClassSection(item, index) {
+           $(`#${item}`).attr('selected',true);
         }
     // =========
     // Delete Class 
@@ -185,7 +201,7 @@ $(".js-example-basic-multiple").select2({
         function delete_patient(id)
         {
             var url= window.location.origin;
-            $("#anchor").attr("href", url+'/patient_delete/'+id);
+            $("#anchorDelete").attr("href", url+'/class/delete/'+id);
             $('#deleteModal').modal('show');
         }
 
@@ -198,9 +214,9 @@ $(".js-example-basic-multiple").select2({
                 type: "Post",
                 dataType: "json",
                 url: '{{url("class/status")}}',
-                data: {'status': status, 'class_id': class_id},
+                data: {'status': status, 'class_id': class_id , "_token": "{{ csrf_token() }}",},
                 success: function(data){
-                console.log(data.success)
+                toastr.success('Class Status Updated');
                 }
             });
         })

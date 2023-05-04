@@ -27,6 +27,7 @@ Route::group([], function () {
         Route::get('all',[ClassController::class,'index'])->name('class.all');
         Route::get('classall',[ClassController::class,'all'])->name('cl.all');
         Route::get('edit/{id}',[ClassController::class,'edit'])->name('class.edit');
+        Route::get('delete/{id}',[ClassController::class,'delete'])->name('class.delete');
         Route::post('status',[ClassController::class,'status'])->name('class.status');
         Route::post('add',[ClassController::class,'create'])->name('class.add');
     });
