@@ -13,7 +13,8 @@
             <i class="fa fa-home"></i>
             <span>Home</span></a>
     </li>
-
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item px-2">
         <a class="nav-link p-2 rounded w-100 collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -26,6 +27,41 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{url('class/add')}}">Create Class</a>
                 <a class="collapse-item" href="{{url('class/all')}}">All Class</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item px-2">
+        <a class="nav-link p-2 rounded w-100 collapsed" href="#" data-toggle="collapse" data-target="#subjects"
+            aria-expanded="true" aria-controls="subjects">
+            <i class="fas fa-user-graduate"></i>
+            <span>Subjects</span>
+        </a>
+        <div id="subjects" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{url('subject/all')}}">All Subjects</a>
+            </div>
+        </div>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item px-2">
+        <a class="nav-link p-2 rounded w-100 collapsed" href="#" data-toggle="collapse" data-target="#students"
+            aria-expanded="true" aria-controls="students">
+            <i class="fas fa-user-graduate"></i>
+            <span>Students</span>
+        </a>
+        <div id="students" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{url('student/all')}}">All Students</a>
             </div>
         </div>
     </li>

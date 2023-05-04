@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Classes\ClassController;
+use App\Http\Controllers\Subject\SubjectController;
+use App\Http\Controllers\Student\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,21 @@ Route::group([], function () {
         Route::get('delete/{id}',[ClassController::class,'delete'])->name('class.delete');
         Route::post('status',[ClassController::class,'status'])->name('class.status');
         Route::post('add',[ClassController::class,'create'])->name('class.add');
+    });
+    
+    Route::group(['prefix' => 'subject'], function () {
+        Route::get('all',[SubjectController::class,'index'])->name('subject.all');
+        Route::get('edit/{id}',[SubjectController::class,'edit'])->name('subject.edit');
+        Route::get('delete/{id}',[SubjectController::class,'delete'])->name('subject.delete');
+        Route::post('status',[SubjectController::class,'status'])->name('subject.status');
+        Route::post('add',[SubjectController::class,'create'])->name('subject.add');
+    });
+    Route::group(['prefix' => 'student'], function () {
+        Route::get('all',[StudentController::class,'index'])->name('student.all');
+        Route::get('edit/{id}',[StudentController::class,'edit'])->name('student.edit');
+        Route::get('delete/{id}',[StudentController::class,'delete'])->name('student.delete');
+        Route::post('status',[StudentController::class,'status'])->name('student.status');
+        Route::post('add',[StudentController::class,'create'])->name('student.add');
     });
 
 
