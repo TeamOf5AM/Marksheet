@@ -65,14 +65,25 @@
                                         <small>
                                             <b>Father Name : </b><span>{{$data->father_name}}</span><br/>
                                             <b>Mother Name : </b><span>{{$data->mother_name}}</span><br/>
-                                            <b>Mob Num : </b><span>{{$data->mob_num}}</span><br/>
-                                            <b>Age : </b><span>{{$data->adhar_num}}</span><br/>
-                                            <b>Gender : </b><span>{{$data->gender}}</span><br/>
-                                            <b>Blood Group : </b><span>{{$data->blood_group}}</span><br/>
-                                            <b>Nationality : </b><span>{{$data->nationality}}</span><br/>
+                                            <b>Mob No. : </b><span>{{$data->mob_num}}</span><br/>
                                         </small>
                                     </td>
-                                    <td>{{$data->address}}</td>
+                                    <td>
+                                        <small>
+                                            <b>Mob No. : </b><span>{{$data->mob_num}}</span><br/>
+                                            <b>Email : </b><span>{{$data->email}}</span><br/>
+                                            <b>Emg Contact Name : </b><span>{{$data->emg_contact_name}}</span><br/>
+                                            <b>Emg No. : </b><span>{{$data->emg_mob_num}}</span><br/>
+                                        </small>
+                                    </td>
+                                    <td>
+                                        <small>
+                                            <b>Address : </b><span>{{$data->address}}</span><br/>
+                                            <b>Country : </b><span>{{$data->country}}</span><br/>
+                                            <b>State : </b><span>{{$data->state}}</span><br/>
+                                            <b>City : </b><span>{{$data->city}}</span><br/>
+                                        </small>
+                                    </td>
                                     <td>
                                         <div class="custom-control custom-switch">
                                             <input type="checkbox" class="custom-control-input updateToggle" id="{{$data->subject_id}}" {{ $data->status == 1 ? 'Checked' : '' }}>
@@ -96,115 +107,9 @@
     </div>
     <!-- /.container-fluid -->
 
-
-
-        <!-- Add Class Modal-->
-    <div class="modal fade" id="addStudentModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Add Subject</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                <form id="addSubject">
-                    @csrf
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label class="small mb-1" for="subject_name">Subject Name</label>
-                            <input class="form-control" id="subject_name" name="subject_name" type="text" placeholder="Enter Subject Name" value="" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="small mb-1" for="subject_code">Subject Code</label>
-                            <input class="form-control" id="subject_code" name="subject_code" type="text" placeholder="Enter Subject Code" value="" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="small mb-1" for="id_label_single">Class</label><br>
-                            <select class="form-control js-example-placeholder-multiple" name="class_id[]" multiple="multiple" id="id_label_single" style="width:100%;">
-
-                            </select>
-                        </div>
-                    </div>
-                    <input type="hidden" id="id" value="">
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <button class="btn btn-primary" type="submit">Save</button>
-                </div>
-            </form>
-            </div>
-        </div>
-    </div>
-
     @include('user/partials/delete')
 
     <script>
-
-        $( document ).ready(function() {
-            $(".js-example-placeholder-multiple").select2({
-                placeholder: "Select Class",
-                allowClear: true
-            });
-        });
-
-    // =========
-    // Add Class 
-    // =========
-
-        $('#addSubject').submit(function(e){
-            e.preventDefault();
-            // $('.field_error').html('');
-            $.ajax({
-                url:'{{route("subject.add")}}',
-                data:$('#addSubject').serialize(),
-                type:'post',
-                success:function(result){
-                if(result.status=="error"){
-                    $.each(result.error,function(key,val){
-                    jQuery('#'+key+'_error').html(val[0]);
-                    });
-                }
-                
-                if(result.status== true){
-                    $('#addSubject')[0].reset();;
-                    $('#addStudentModal').modal('hide');
-                    window.location = window.location;
-                }
-                }
-            });
-        });
-
-    // =========
-    // Edit Class 
-    // =========
-
-        function edit_subject(id)
-        {
-            $.get('{{url("class/edit")}}/'+id, function(data, status){
-                $('#id').val(id);
-                $('#class_name').val(data.data.class_name);
-                $('#class_numeric').val(data.data.class_numeric);
-                const res = JSON.parse(data.data.class_section);
-                // res.forEach(myClassSection);
-                $(".js-example-basic-multiple").select2('destroy');
-                $(".js-example-basic-multiple").select2({ data: res });
-                // $(".js-example-basic-multiple").select2();
-                // setTimeout(function(){
-                //     console.log('hello');
-                // },5000)
-                $('#addStudentModal').modal('show');
-            });
-
-        }
-        function myClassSection(item, index) {
-           $(`#${item}`).attr('selected',true);
-        }
-    // =========
-    // Delete Class 
-    // =========
 
         function delete_subject(id)
         {
@@ -229,14 +134,6 @@
             });
         })
 
-
-
-$(window).ready(function(){
-    $('#toast').toast('show');
-    setTimeout(() => {
-            $('#appointment').modal('show');
-    },1000);
-});
 </script>
 
 
