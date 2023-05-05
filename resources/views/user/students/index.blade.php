@@ -37,8 +37,10 @@
                             <thead>
                                 <tr>
                                     <th>S No.</th>
-                                    <th>Subject Name</th>
-                                    <th>Subject Code</th>
+                                    <th>Student Details</th>
+                                    <th>Family Details</th>
+                                    <th>Contact Details</th>
+                                    <th>Address</th>
                                     <th>Status</th>
                                     <th>Creation Date</th>
                                     <th>Action</th>
@@ -48,8 +50,29 @@
                                 @foreach($students as $key => $data)
                                 <tr>
                                     <td>{{$key+1}}</td>
-                                    <td>{{$data->subject_name}}</td>
-                                    <td>{{$data->subject_code}}</td>
+                                    <td>
+                                        <small>
+                                            <b>Name : </b><span>{{$data->first_name}} {{$data->last_name}}</span><br/>
+                                            <b>Roll Num : </b><span>{{$data->student_roll_num}}</span><br/>
+                                            <b>Adhar Num : </b><span>{{$data->adhar_num}}</span><br/>
+                                            <b>Age : </b><span>{{$data->age}}</span><br/>
+                                            <b>Gender : </b><span>{{$data->gender}}</span><br/>
+                                            <b>Blood Group : </b><span>{{$data->blood_group}}</span><br/>
+                                            <b>Nationality : </b><span>{{$data->nationality}}</span><br/>
+                                        </small>
+                                    </td>
+                                    <td>
+                                        <small>
+                                            <b>Father Name : </b><span>{{$data->father_name}}</span><br/>
+                                            <b>Mother Name : </b><span>{{$data->mother_name}}</span><br/>
+                                            <b>Mob Num : </b><span>{{$data->mob_num}}</span><br/>
+                                            <b>Age : </b><span>{{$data->adhar_num}}</span><br/>
+                                            <b>Gender : </b><span>{{$data->gender}}</span><br/>
+                                            <b>Blood Group : </b><span>{{$data->blood_group}}</span><br/>
+                                            <b>Nationality : </b><span>{{$data->nationality}}</span><br/>
+                                        </small>
+                                    </td>
+                                    <td>{{$data->address}}</td>
                                     <td>
                                         <div class="custom-control custom-switch">
                                             <input type="checkbox" class="custom-control-input updateToggle" id="{{$data->subject_id}}" {{ $data->status == 1 ? 'Checked' : '' }}>
