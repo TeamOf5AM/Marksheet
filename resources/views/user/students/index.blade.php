@@ -1,5 +1,5 @@
 @extends('user/layout')
-@section('page_title','All | Subjects')
+@section('page_title','All | Studentss')
 @section('all clases','active')
 @section('container')
 
@@ -8,11 +8,11 @@
         <div class="card bg-white rounded-0">
             <div class="container-fluid py-2">
                 <!-- Page Heading -->
-                <h1 class="h4 font-weight-bold text-black">All Subjects</h1>
+                <h1 class="h4 font-weight-bold text-black">All Students</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item" aria-current="page"><a class="mclr" href="{{url('/')}}">Home</a></li>
-                        <li class="breadcrumb-item " aria-current="page">All Subjects</li>
+                        <li class="breadcrumb-item " aria-current="page">All Students</li>
                     </ol>
                 </nav>
             </div>
@@ -24,10 +24,10 @@
                 <div class="card-header py-3">
                     <div class="row">
                         <div class="col-6">
-                            <h6 class="m-0 font-weight-bold text-dark">All Subjects Info</h6>
+                            <h6 class="m-0 font-weight-bold text-dark">All Students Info</h6>
                         </div>
                         <div class="col-6 text-right">
-                            <h6 class="m-0 font-weight-bold text-dark"><button  class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addSubjectModal">+ Add Subject</button></h6>
+                            <h6 class="m-0 font-weight-bold text-dark"><button  class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addStudentModal">+ Add Student</button></h6>
                         </div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($subjects as $key => $data)
+                                @foreach($students as $key => $data)
                                 <tr>
                                     <td>{{$key+1}}</td>
                                     <td>{{$data->subject_name}}</td>
@@ -76,7 +76,7 @@
 
 
         <!-- Add Class Modal-->
-    <div class="modal fade" id="addSubjectModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="addStudentModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -101,9 +101,7 @@
                         <div class="col-md-6 mb-3">
                             <label class="small mb-1" for="id_label_single">Class</label><br>
                             <select class="form-control js-example-placeholder-multiple" name="class_id[]" multiple="multiple" id="id_label_single" style="width:100%;">
-                                @foreach($classes as $data)
-                                <option id="{{$data->class_id}}" value="{{$data->class_id}}">{{$data->class_name}}</option>
-                                @endforeach
+
                             </select>
                         </div>
                     </div>
@@ -149,7 +147,7 @@
                 
                 if(result.status== true){
                     $('#addSubject')[0].reset();;
-                    $('#addSubjectModal').modal('hide');
+                    $('#addStudentModal').modal('hide');
                     window.location = window.location;
                 }
                 }
@@ -174,7 +172,7 @@
                 // setTimeout(function(){
                 //     console.log('hello');
                 // },5000)
-                $('#addSubjectModal').modal('show');
+                $('#addStudentModal').modal('show');
             });
 
         }
