@@ -34,53 +34,46 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
+                            <thead class="bg-gradient-primary small text-light">
                                 <tr>
-                                    <th>S No.</th>
+                                    <th># </th>
                                     <th>Student Details</th>
                                     <th>Family Details</th>
                                     <th>Contact Details</th>
                                     <th>Address</th>
                                     <th>Status</th>
-                                    <th>Creation Date</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($students as $key => $data)
                                 <tr>
-                                    <td>{{$key+1}}</td>
+                                    <td>
+                                        <small>
+                                            {{$key+1}}
+                                        </small>
+                                    </td>
                                     <td>
                                         <small>
                                             <b>Name : </b><span>{{$data->first_name}} {{$data->last_name}}</span><br/>
-                                            <b>Roll Num : </b><span>{{$data->student_roll_num}}</span><br/>
-                                            <b>Adhar Num : </b><span>{{$data->adhar_num}}</span><br/>
-                                            <b>Age : </b><span>{{$data->age}}</span><br/>
-                                            <b>Gender : </b><span>{{$data->gender}}</span><br/>
-                                            <b>Blood Group : </b><span>{{$data->blood_group}}</span><br/>
-                                            <b>Nationality : </b><span>{{$data->nationality}}</span><br/>
+                                            <b>Roll Num : </b><span class="text-danger" style="cursor:pointer;">{{$data->student_roll_num}}</span><br/>
                                         </small>
                                     </td>
                                     <td>
                                         <small>
                                             <b>Father Name : </b><span>{{$data->father_name}}</span><br/>
                                             <b>Mother Name : </b><span>{{$data->mother_name}}</span><br/>
-                                            <b>Mob No. : </b><span>{{$data->mob_num}}</span><br/>
                                         </small>
                                     </td>
                                     <td>
                                         <small>
                                             <b>Mob No. : </b><span>{{$data->mob_num}}</span><br/>
                                             <b>Email : </b><span>{{$data->email}}</span><br/>
-                                            <b>Emg Contact Name : </b><span>{{$data->emg_contact_name}}</span><br/>
-                                            <b>Emg No. : </b><span>{{$data->emg_mob_num}}</span><br/>
                                         </small>
                                     </td>
                                     <td>
                                         <small>
                                             <b>Address : </b><span>{{$data->address}}</span><br/>
-                                            <b>Country : </b><span>{{$data->country}}</span><br/>
-                                            <b>State : </b><span>{{$data->state}}</span><br/>
                                             <b>City : </b><span>{{$data->city}}</span><br/>
                                         </small>
                                     </td>
@@ -90,7 +83,6 @@
                                             <label class="custom-control-label" for="{{$data->subject_id}}"></label>
                                         </div>
                                     </td>
-                                    <td>{{$data->created_at}}</td>
                                     <td>
                                         <a href="javascript:void(0);" onclick=edit_subject({{"$data->subject_id"}})><i class="far fa-edit" style="color: #5721d4;"></i></a>
                                         <a href="javascript:void(0);" onclick=delete_subject({{"$data->subject_id"}})><i class="far fa-trash-alt text-danger"></i></a>
@@ -108,6 +100,8 @@
     <!-- /.container-fluid -->
 
     @include('user/partials/delete')
+
+    
 
     <script>
 
