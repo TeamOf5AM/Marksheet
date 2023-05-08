@@ -6,6 +6,7 @@
     <!-- Begin Page Content -->
     <div>
         <div class="card bg-white rounded-0">
+            @include('user/partials/canvas')
             <div class="container-fluid py-2">
                 <!-- Page Heading -->
                 <h1 class="h4 font-weight-bold text-black">All Students</h1>
@@ -27,7 +28,7 @@
                             <h6 class="m-0 font-weight-bold text-dark">All Students Info</h6>
                         </div>
                         <div class="col-6 text-right">
-                            <h6 class="m-0 font-weight-bold text-dark"><button  class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addStudentModal">+ Add Student</button></h6>
+                            <h6 class="m-0 font-weight-bold text-dark"><a  class="btn btn-sm btn-primary" href="{{route('student.create')}}">+ Add Student</a></h6>
                         </div>
                     </div>
                 </div>
@@ -56,7 +57,7 @@
                                     <td>
                                         <small>
                                             <b>Name : </b><span>{{$data->first_name}} {{$data->last_name}}</span><br/>
-                                            <b>Roll Num : </b><span class="text-danger" style="cursor:pointer;">{{$data->student_roll_num}}</span><br/>
+                                            <b>Roll Num : </b><span class="text-danger" onclick="openNav()" style="cursor:pointer;">{{$data->student_roll_num}}</span><br/>
                                         </small>
                                     </td>
                                     <td>
@@ -104,6 +105,16 @@
     
 
     <script>
+
+        function openNav() {
+        document.getElementById("mySidenav").style.width = "1000px";
+        document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft= "0";
+        }
 
         function delete_subject(id)
         {

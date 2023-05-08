@@ -43,6 +43,7 @@ Route::group([], function () {
     });
     Route::group(['prefix' => 'student'], function () {
         Route::get('all',[StudentController::class,'index'])->name('student.all');
+        Route::get('create',[StudentController::class,'create'])->name('student.create');
         Route::get('edit/{id}',[StudentController::class,'edit'])->name('student.edit');
         Route::get('delete/{id}',[StudentController::class,'delete'])->name('student.delete');
         Route::post('status',[StudentController::class,'status'])->name('student.status');
