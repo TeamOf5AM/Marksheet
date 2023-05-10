@@ -80,13 +80,13 @@
                                     </td>
                                     <td>
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input updateToggle" id="{{$data->subject_id}}" {{ $data->status == 1 ? 'Checked' : '' }}>
-                                            <label class="custom-control-label" for="{{$data->subject_id}}"></label>
+                                            <input type="checkbox" class="custom-control-input updateToggle" id="{{$data->student_id}}"{{ $data->status == 1 ? 'Checked' : '' }}>
+                                            <label class="custom-control-label" for="{{$data->student_id}}"></label>
                                         </div>
                                     </td>
                                     <td>
-                                        <a href="javascript:void(0);" onclick=edit_subject({{"$data->subject_id"}})><i class="far fa-edit" style="color: #5721d4;"></i></a>
-                                        <a href="javascript:void(0);" onclick=delete_subject({{"$data->subject_id"}})><i class="far fa-trash-alt text-danger"></i></a>
+                                        <a href="{{url('/student/edit/'.$data->student_id)}}"><i class="far fa-edit" style="color: #5721d4"></i></a>
+                                        <a href="javascript:void(0)" onclick=delete_student({{$data->student_id}})><i class="far fa-trash-alt text-danger"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -116,25 +116,25 @@
         document.getElementById("main").style.marginLeft= "0";
         }
 
-        function delete_subject(id)
+        function delete_student(id)
         {
             var url= window.location.origin;
-            $("#anchorDelete").attr("href", url+'/subject/delete/'+id);
+            $("#anchorDelete").attr("href", url+'/student/delete/'+id);
             $('#deleteModal').modal('show');
         }
 
 
         $('.updateToggle').change(function() {
             var status = $(this).prop('checked') == true ? 1 : 0; 
-            var subject_id = $(this).attr('id'); 
+            var student_id = $(this).attr('id'); 
             
             $.ajax({
                 type: "Post",
                 dataType: "json",
-                url: '{{url("subject/status")}}',
-                data: {'status': status, 'subject_id': subject_id , "_token": "{{ csrf_token() }}",},
+                url: '{{url("student/status")}}',
+                data: {'status': status, 'student_id': student_id , "_token": "{{ csrf_token() }}",},
                 success: function(data){
-                toastr.success('Subject Status Updated');
+                toastr.success('Student Status Updated');
                 }
             });
         })

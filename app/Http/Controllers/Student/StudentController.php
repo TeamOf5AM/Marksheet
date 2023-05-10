@@ -17,7 +17,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $result['students'] = Student::all();
+        $result['students'] = Student::where('trash',0)->get();
         return view('user.students.index',$result);
     }
 
@@ -77,6 +77,20 @@ class StudentController extends Controller
         return redirect()->route('student.all');
     }
 
+    public function status(Request $request)
+    {
+        Student::where('student_id',$request->student_id)->update(array('status' => $request->status)); 
+        return response()->json(['msg'=>trans('Student Updates'),'status' => true],200);
+    }
+
+    public function delete($student_id)
+    {
+        Student::where('student_id',$student_id)->update(array('trash' => 1));
+        Session::flash('success', 'Student Deleted Successfully'); 
+        return back();
+        // return back()->with(['msg' => 'Class Deleted']);
+    }
+
     /**
      * Display the specified resource.
      *
@@ -94,9 +108,30 @@ class StudentController extends Controller
      * @param  \App\Models\Student\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit($student_id)
     {
-        //
+        $res = Student::where('student_id',$student_id)->first();
+        $f_name = $res->first_name;
+        $l_name = $res->last_name;
+                    // $student->age;
+                    // $student->gender;
+                    // $student->blood_group
+                    // $student->nationality
+                    // $student->father_name
+                    // $student->mother_name
+                    // $student->mob_num
+                    // $student->email
+                    // $student->emg_contact_name
+                    // $student->emg_mob_num
+                    // $student->address
+                    // $student->country
+                    // $student->state
+                    // $student->city
+                    // $student->pincode
+                    // $student->adhar_num
+                    // $student->relation
+                    // $student->student_roll_num
+        dd($res->first_name);
     }
 
     /**
