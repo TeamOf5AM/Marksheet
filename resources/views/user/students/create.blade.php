@@ -21,7 +21,8 @@
         </div>
         <div class="container-fluid py-3">
             <!-- DataTales Example -->
-            <form action="" method="post">
+            <form action="{{route('student.add')}}" method="POST">
+                @csrf
                 <div class="card shadow mb-4 p-4">
                     <div class="row mb-4">
                         <div class="col-md-4">
@@ -200,14 +201,26 @@
                                                 <input type="text" name="pincode" id="pincode" class="form-control form-control-sm">
                                             </div>
                                         </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="adhar_num" class="form-label small font-weight-bold">Adhar Card No.<span class="text-danger">*</span></label>
+                                                <input type="text" name="adhar_num" id="adhar_num" class="form-control form-control-sm">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="relation" class="form-label small font-weight-bold">Relation<span class="text-danger">*</span></label>
+                                                <input type="text" name="relation" id="relation" class="form-control form-control-sm">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 text-right">
-                        <button type="submit" name="save" class="btn btn-primary">Save</button>
-                        <button type="submit" name="save_and_draft" class="btn btn-info">Save And Draft</button>
+                        <button type="submit" name="save" class="btn btn-primary" value="save">Save</button>
+                        <button type="submit" name="draft" class="btn btn-info" value="draft">Save And Draft</button>
                         <a href="{{route('student.all')}}" class="btn btn-danger">Cancel</a>
                     </div>
                 </div>

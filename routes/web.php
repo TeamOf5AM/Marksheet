@@ -47,7 +47,7 @@ Route::group([], function () {
         Route::get('edit/{id}',[StudentController::class,'edit'])->name('student.edit');
         Route::get('delete/{id}',[StudentController::class,'delete'])->name('student.delete');
         Route::post('status',[StudentController::class,'status'])->name('student.status');
-        Route::post('add',[StudentController::class,'create'])->name('student.add');
+        Route::post('add',[StudentController::class,'store'])->name('student.add');
     });
 
 
