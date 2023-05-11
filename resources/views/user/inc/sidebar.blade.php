@@ -66,6 +66,20 @@
         </div>
     </li>
 
+    <li class="nav-item px-2">
+        <a class="nav-link p-2 rounded w-100 collapsed" href="#" data-toggle="collapse" data-target="#results"
+            aria-expanded="true" aria-controls="results">
+            <i class="fas fa-user-graduate"></i>
+            <span>Results</span>
+        </a>
+        <div id="results" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{url('result/all')}}">Results</a>
+            </div>
+        </div>
+    </li>
+
     <!-- Nav Item - Tables -->
     <li class="nav-item">
         <a class="nav-link" href="tables.html">
