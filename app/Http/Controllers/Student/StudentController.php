@@ -28,7 +28,28 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('user.students.create');
+        $result['f_name'] = '';
+        $result['l_name'] = '';
+        $result['age'] = '';
+        $result['dob'] = '';
+        $result['gender'] = '';
+        $result['blood_group'] = '';
+        $result['nationality'] = '';
+        $result['father_name'] = '';
+        $result['mother_name'] = '';
+        $result['mob_num'] = '';
+        $result['email'] = '';
+        $result['emg_contact_name'] = '';
+        $result['emg_mob_num'] = '';
+        $result['address'] = '';
+        $result['country'] = '';
+        $result['state'] = '';
+        $result['city'] = '';
+        $result['pincode'] = '';
+        $result['adhar_num'] = '';
+        $result['relation'] = '';
+        $result['student_roll_num'] = '';
+        return view('user.students.create',$result);
     }
 
     /**
@@ -44,6 +65,7 @@ class StudentController extends Controller
         $student->first_name = $input['f_name'];
         $student->last_name = $input['l_name'];
         $student->age = $input['age'];
+        $student->dob = $input['dob'];
         $student->gender = $input['gender'];
         $student->blood_group = $input['blood_group'];
         $student->nationality = $input['nationality'];
@@ -111,27 +133,28 @@ class StudentController extends Controller
     public function edit($student_id)
     {
         $res = Student::where('student_id',$student_id)->first();
-        $f_name = $res->first_name;
-        $l_name = $res->last_name;
-                    // $student->age;
-                    // $student->gender;
-                    // $student->blood_group
-                    // $student->nationality
-                    // $student->father_name
-                    // $student->mother_name
-                    // $student->mob_num
-                    // $student->email
-                    // $student->emg_contact_name
-                    // $student->emg_mob_num
-                    // $student->address
-                    // $student->country
-                    // $student->state
-                    // $student->city
-                    // $student->pincode
-                    // $student->adhar_num
-                    // $student->relation
-                    // $student->student_roll_num
-        dd($res->first_name);
+        $result['f_name'] = $res->first_name;
+        $result['l_name'] = $res->last_name;
+        $result['age'] =  $res->age;
+        $result['dob'] =  $res->dob;
+        $result['gender'] = $res->gender;
+        $result['blood_group'] = $res->blood_group;
+        $result['nationality'] = $res->nationality;
+        $result['father_name'] = $res->father_name;
+        $result['mother_name'] = $res->mother_name;
+        $result['mob_num'] = $res->mob_num;
+        $result['email'] = $res->email;
+        $result['emg_contact_name'] = $res->emg_contact_name;
+        $result['emg_mob_num'] = $res->emg_mob_num;
+        $result['address'] = $res->address;
+        $result['country'] = $res->country;
+        $result['state'] = $res->state;
+        $result['city'] = $res->city;
+        $result['pincode'] = $res->pincode;
+        $result['adhar_num'] = $res->adhar_num;
+        $result['relation'] = $res->relation;
+        $result['student_roll_num'] = $res->student_roll_num;
+        return view('user.students.create',$result);
     }
 
     /**

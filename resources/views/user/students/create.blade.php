@@ -53,32 +53,32 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="f_name" class="form-label small font-weight-bold">First Name <span class="text-danger">*</span></label>
-                                                <input type="text" name="f_name" id="f_name" class="form-control form-control-sm">
+                                                <input type="text" name="f_name" id="f_name" value="{{$f_name}}" class="form-control form-control-sm">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="l_name" class="form-label small font-weight-bold">Last Name <span class="text-danger">*</span></label>
-                                                <input type="text" name="l_name" id="l_name" class="form-control form-control-sm">
+                                                <input type="text" name="l_name" id="l_name" value="{{$l_name}}" class="form-control form-control-sm">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="age" class="form-label small font-weight-bold">Age <span class="text-danger">*</span></label>
-                                                <input type="text" name="age" id="age" class="form-control form-control-sm">
+                                                <input type="text" name="age" id="age" value="{{$age}}" class="form-control form-control-sm">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="dob" class="form-label small font-weight-bold">D.O.B <span class="text-danger">*</span></label>
-                                                <input type="date" name="dob" id="dob" class="form-control form-control-sm">
+                                                <input type="date" name="dob" id="dob" value="{{$dob}}" class="form-control form-control-sm">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="gender" class="form-label small font-weight-bold">Gender <span class="text-danger">*</span></label>
                                                 <select class="form-control form-control-sm" name="gender" id="gender">
-                                                    <option default>Select Gender</option>
+                                                    <option selected>{{$gender ? "male":'Select Gender'}}</option>
                                                     <option value="Male">Male</option>
                                                     <option value="Female">Female</option>
                                                     <option value="Other">Other</option>
